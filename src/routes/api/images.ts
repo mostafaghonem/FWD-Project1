@@ -1,8 +1,7 @@
 import express from 'express';
 import resizedImg from '../../util/resizeImg';
 import imgExist from '../../util/imgExist';
-import path from 'path';
-const sharp = require('sharp')
+
 
 const router = express.Router();
 
