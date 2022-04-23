@@ -5,5 +5,5 @@ FWD Scholarship from Udacity first Project
 2 - **npm install** *to install all used packages*  
 ## Endpoints
 **app can make requests to the following REST endpoints:**  
-- <ins>GET /api/images?filename=*ImgName*&width=*width*&height=*height*<ins>
+- <ins>GET localhost:5000/api/images?filename=*ImgName*&width=*width*&height=*height*<ins>
  
