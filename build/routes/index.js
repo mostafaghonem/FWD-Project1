@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 "use strict";
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
@@ -12,18 +11,3 @@ router.get('/', (req, res) => {
 });
 router.use('/images', images_1.default);
 exports.default = router;
-=======
-"use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-const express_1 = __importDefault(require("express"));
-const images_1 = __importDefault(require("./api/images"));
-const router = express_1.default.Router();
-router.get('/', (req, res) => {
-    res.send('Welcome to the API');
-});
-router.use('/images', images_1.default);
-exports.default = router;
->>>>>>> 5a13ea8290813a89db280eccf98001c339696b03
