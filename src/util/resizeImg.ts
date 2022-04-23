@@ -10,10 +10,10 @@ const resizedImg = async function (imgName:string ,currentPath:string , width:nu
             width: width,
             height: height,
         })
-        .toFile(currentPath + `/thumbs/${imgName}${width}x${height}_thumb.jpg`);
+        .toFile(currentPath + `/thumbs/${imgName}_thumb.jpg`);
 
     let resImg = path
-        .join(currentPath, 'thumbs', imgName)
+        .join(currentPath, 'thumbs', `${imgName}_thumb`)
         .replace(/\\/g, '/');
     resImg += '.jpg';
 
