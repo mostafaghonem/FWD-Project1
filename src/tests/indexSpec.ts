@@ -1,6 +1,7 @@
 import app from '../index';
 import supertest from 'supertest';
-
+import resizedImg from '../util/resizeImg';
+import path from 'path';
 
 const request = supertest(app);
 describe('1 - Test endPoint Response', () => {
@@ -13,3 +14,10 @@ describe('1 - Test endPoint Response', () => {
         expect(response.status).toBe(200);
     });
 });
+
+describe('2 - Test resizing the image' , ()=>{
+    it('test the OutPut string path of resizeing Function' , async()=>{
+        let res = await resizedImg('m' , path.resolve('./') , 200 , 200);
+        expect(res).toEqual('C:/Users/Mostafa ghonem/Desktop/FWD-Project1/thumbs/m_thumb.jpg');
+    })
+})

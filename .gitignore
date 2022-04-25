@@ -1,4 +1,4 @@
 node_modules
 package-lock.json
-src/routes/api/thumbs/*
+thumbs/*.jpg
 package-old.json
