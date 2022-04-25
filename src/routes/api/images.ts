@@ -2,10 +2,13 @@ import express from 'express';
 import resizedImg from '../../util/resizeImg';
 import imgExist from '../../util/imgExist';
 import validateEndpoint from '../../models/image';
+import { Request, Response, NextFunction } from "express";
+import path from 'path';
+
 
 const router = express.Router();
 
-router.get('/', async (req, res) => {
+router.get('/', async (req:Request, res:Response) => {
     try {
         let imgName: string = req.query.filename as string;
         let width = parseInt(req.query.width as unknown as string);
@@ -19,10 +22,10 @@ router.get('/', async (req, res) => {
         let {error} = validateEndpoint(img);
         if(error) throw(error.details[0].message);
 
-        let err = await imgExist(__dirname, imgName);
+        let err = await imgExist(path.resolve("./"), imgName);
         if(!err) throw 'Image Name does not Exist...';
 
-        let resImg = await resizedImg(imgName , __dirname , width , height);
+        let resImg = await resizedImg(imgName , path.resolve("./") , width , height);
         res.status(200).sendFile(resImg);
     } catch (err) {
         res.status(400).send(err);

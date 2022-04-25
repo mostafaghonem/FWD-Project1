@@ -12,16 +12,19 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const index_1 = __importDefault(require("../index"));
-const supertest_1 = __importDefault(require("supertest"));
-const request = (0, supertest_1.default)(index_1.default);
-describe('1 - Test endPoint Response', () => {
-    it('get the api/images endpoint', () => __awaiter(void 0, void 0, void 0, function* () {
-        let response = yield request.get('/api/images');
-        expect(response.status).toBe(400);
-    }));
-    it('get the api/images?filename=imgName&width=number&height=number endpoint', () => __awaiter(void 0, void 0, void 0, function* () {
-        let response = yield request.get('/api/images?filename=m&width=200&height=200');
-        expect(response.status).toBe(200);
-    }));
-});
+const path_1 = __importDefault(require("path"));
+const fs_1 = require("fs");
+const imgExist = function (dirName, imgName) {
+    return __awaiter(this, void 0, void 0, function* () {
+        let img = path_1.default.join(dirName, 'images', imgName).replace(/\\/g, '/');
+        img += '.jpg';
+        try {
+            yield fs_1.promises.readFile(img); //if image name is incorect , it will throw an error
+            return 1;
+        }
+        catch (err) {
+            return 0;
+        }
+    });
+};
+exports.default = imgExist;
