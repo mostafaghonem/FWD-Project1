@@ -24,7 +24,7 @@ router.get('/', async (req:Request, res:Response) => {
         if(error) throw(error.details[0].message);
 
         let err = await imgExist(path.resolve("./"), imgName);
-        if(!err) throw 'Image Name does not Exist...';
+        if(!err) throw `${imgName} image name does not Exist...`;
 
         //added cache from https://www.geeksforgeeks.org/how-to-access-cache-data-in-node-js/
         let key = imgName+width+height;
