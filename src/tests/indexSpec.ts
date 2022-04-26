@@ -18,6 +18,7 @@ describe('1 - Test endPoint Response', () => {
 describe('2 - Test resizing the image' , ()=>{
     it('test the OutPut string path of resizeing Function' , async()=>{
         let res = await resizedImg('m' , path.resolve('./') , 200 , 200);
-        expect(res).toEqual('C:/Users/Mostafa ghonem/Desktop/FWD-Project1/thumbs/m_thumb.jpg');
+        let imgPath  = path.join(path.resolve('./') , 'thumbs').replace(/\\/g,'/');
+        expect(res).toEqual(`${imgPath}/m_thumb.jpg`);
     })
 })

@@ -6,11 +6,11 @@
   "scripts": {
     "start_": "ts-node-dev index.ts",
     "build": "npx tsc",
-    "prettier": "prettier --config .prettierrc ./**/*.ts --write",
+    "prettier": "prettier --config .prettierrc src/**/*.ts --write",
     "tsc": "tsc",
     "test": "jasmine-ts",
     "start": "nodemon src/index.ts",
-    "lint": "eslint . --ext .ts"
+    "lint": "eslint  src/**/*.ts"
   },
   "repository": {
     "type": "git",

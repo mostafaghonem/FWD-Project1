@@ -1,7 +1,7 @@
 import path from 'path';
 import { promises as fs } from 'fs';
 
-const imgExist = async function (dirName: string, imgName: string) {
+const imgExist = async function (dirName: string, imgName: string):Promise<number> {
     let img = path.join(dirName, 'images', imgName).replace(/\\/g, '/');
     img += '.jpg';
     try{

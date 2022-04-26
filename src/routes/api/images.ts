@@ -9,12 +9,13 @@ const myCache = new NodeCache();
 
 const router = express.Router();
 
-router.get('/', async (req:Request, res:Response) => {
+router.get('/', async (req:Request, res:Response) : Promise<void>=> {
     try {
         let imgName: string = req.query.filename as string;
         let width = parseInt(req.query.width as unknown as string);
         let height = parseInt(req.query.height as unknown as string);
 
+        //validate for user input filename , width and height
         let img = {
             name:imgName,
             width:width,
@@ -23,6 +24,7 @@ router.get('/', async (req:Request, res:Response) => {
         let {error} = validateEndpoint(img);
         if(error) throw(error.details[0].message);
 
+        //check if imgName is exist or not 
         let err = await imgExist(path.resolve("./"), imgName);
         if(!err) throw `${imgName} image name does not Exist...`;
 
@@ -33,8 +35,10 @@ router.get('/', async (req:Request, res:Response) => {
             res.status(200).sendFile(myCache.get(key));
         }else{
             console.log('Resizing the Image...');
+            //resize the given imgName and return its path 
             let resImg = await resizedImg(imgName , path.resolve("./") , width , height);
             myCache.set(key , resImg);
+            //send the resized img to the user
             res.status(200).sendFile(resImg);
         }
 
