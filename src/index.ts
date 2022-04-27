@@ -6,13 +6,11 @@ const app = express();
 
 app.use(express.json());
 app.use(morgan('tiny'));
-app.use('/api' , routes )
-
+app.use('/api', routes);
 
 const port = process.env.PORT || 5000;
-app.listen(port , ()=>{
+app.listen(port, () => {
     console.log(`app listening on port ${port}`);
-})
-
+});
 
 export default app;

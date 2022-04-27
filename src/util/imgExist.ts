@@ -1,14 +1,16 @@
 import path from 'path';
 import { promises as fs } from 'fs';
 
-const imgExist = async function (dirName: string, imgName: string):Promise<number> {
+const imgExist = async function (
+    dirName: string,
+    imgName: string
+): Promise<number> {
     let img = path.join(dirName, 'images', imgName).replace(/\\/g, '/');
     img += '.jpg';
-    try{
+    try {
         await fs.readFile(img); //if image name is incorect , it will throw an error
         return 1;
-    }
-    catch(err){
+    } catch (err) {
         return 0;
     }
 };
