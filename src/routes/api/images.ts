@@ -1,8 +1,7 @@
-import express from 'express';
+import express , {Request , Response} from 'express';
 import resizedImg from '../../util/resizeImg';
 import imgExist from '../../util/imgExist';
 import validateEndpoint from '../../models/image';
-import { Request, Response, NextFunction } from 'express';
 import path from 'path';
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const NodeCache = require('node-cache')
